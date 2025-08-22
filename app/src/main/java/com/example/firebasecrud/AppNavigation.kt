@@ -8,6 +8,7 @@ import androidx.navigation.compose.rememberNavController
 import com.example.firebasecrud.pages.HomePage
 import com.example.firebasecrud.pages.LoginPage
 import com.example.firebasecrud.pages.SignupPage
+import com.example.firebasecrud.viewmodel.AuthViewModel
 
 @Composable
 fun AppNavigation(modifier: Modifier, authViewModel: AuthViewModel) {
