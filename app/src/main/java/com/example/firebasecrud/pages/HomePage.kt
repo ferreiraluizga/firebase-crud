@@ -27,6 +27,12 @@ fun HomePage(modifier: Modifier, navController: NavController, authViewModel: Au
         }) {
             Text(text = "Sign out")
         }
+
+        TextButton(onClick = {
+            navController.navigate("tasks")
+        }) {
+            Text(text = "Visualizar tarefas")
+        }
     }
 
 }

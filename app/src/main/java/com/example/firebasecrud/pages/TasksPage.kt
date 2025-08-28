@@ -1,5 +1,6 @@
 package com.example.firebasecrud.pages
 
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
@@ -13,6 +14,7 @@ import com.example.firebasecrud.viewmodel.TaskViewModel
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.material.icons.filled.Delete
 import androidx.compose.material.icons.filled.Edit
 import androidx.compose.material3.Icon
@@ -42,7 +44,21 @@ fun TasksPage(modifier: Modifier, navController: NavController, taskViewModel: T
 
     Scaffold(
         topBar = {
-            TopAppBar(title = { Text("Gestão de Tarefas") })
+            TopAppBar(
+                title = { Text(text = "Gestão de Tarefas", color = Color.White) },
+                navigationIcon = {
+                    IconButton(onClick = {
+                        navController.navigate("home") {
+                            popUpTo("tasks") { inclusive = true }
+                        }
+                    }) {
+                        Icon(Icons.Filled.ArrowBack, contentDescription = "Voltar", tint = Color.White)
+                    }
+                },
+                colors = TopAppBarDefaults.smallTopAppBarColors(
+                    containerColor = Color.Blue
+                )
+            )
         }
     ) { padding ->
         Column(
