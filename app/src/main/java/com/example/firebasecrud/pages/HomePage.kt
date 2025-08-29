@@ -33,6 +33,12 @@ fun HomePage(modifier: Modifier, navController: NavController, authViewModel: Au
         }) {
             Text(text = "Visualizar tarefas")
         }
+
+        TextButton(onClick = {
+            navController.navigate("users")
+        }) {
+            Text(text = "Visualizar usuários")
+        }
     }
 
 }

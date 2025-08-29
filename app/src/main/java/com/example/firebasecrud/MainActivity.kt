@@ -12,17 +12,19 @@ import androidx.compose.ui.Modifier
 import com.example.firebasecrud.ui.theme.FirebaseCRUDTheme
 import com.example.firebasecrud.viewmodel.AuthViewModel
 import com.example.firebasecrud.viewmodel.TaskViewModel
+import com.example.firebasecrud.viewmodel.UserViewModel
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
-        val authViewModel : AuthViewModel by viewModels()
+        val authViewModel: AuthViewModel by viewModels()
         val taskViewModel: TaskViewModel by viewModels()
+        val userViewModel: UserViewModel by viewModels()
         setContent {
             FirebaseCRUDTheme {
                 Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-                    AppNavigation(modifier = Modifier.padding(innerPadding), authViewModel = authViewModel, taskViewModel = taskViewModel)
+                    AppNavigation(modifier = Modifier.padding(innerPadding), authViewModel = authViewModel, taskViewModel = taskViewModel, userViewModel = userViewModel)
                 }
             }
         }

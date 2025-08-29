@@ -9,11 +9,13 @@ import com.example.firebasecrud.pages.HomePage
 import com.example.firebasecrud.pages.LoginPage
 import com.example.firebasecrud.pages.SignupPage
 import com.example.firebasecrud.pages.TasksPage
+import com.example.firebasecrud.pages.UsersPage
 import com.example.firebasecrud.viewmodel.AuthViewModel
 import com.example.firebasecrud.viewmodel.TaskViewModel
+import com.example.firebasecrud.viewmodel.UserViewModel
 
 @Composable
-fun AppNavigation(modifier: Modifier, authViewModel: AuthViewModel, taskViewModel: TaskViewModel) {
+fun AppNavigation(modifier: Modifier, authViewModel: AuthViewModel, taskViewModel: TaskViewModel, userViewModel: UserViewModel) {
     val navController = rememberNavController()
 
     NavHost(navController = navController, startDestination = "login", builder = {
@@ -28,6 +30,9 @@ fun AppNavigation(modifier: Modifier, authViewModel: AuthViewModel, taskViewMode
         }
         composable("tasks") {
             TasksPage(modifier, navController, taskViewModel)
+        }
+        composable("users") {
+            UsersPage(modifier, navController, userViewModel)
         }
     })
 }
