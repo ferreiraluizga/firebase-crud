@@ -55,7 +55,7 @@ fun TasksPage(modifier: Modifier, navController: NavController, taskViewModel: T
                     }
                 },
                 colors = TopAppBarDefaults.smallTopAppBarColors(
-                    containerColor = Color.Blue
+                    containerColor = Color(0xFF6200EE)
                 )
             )
         }

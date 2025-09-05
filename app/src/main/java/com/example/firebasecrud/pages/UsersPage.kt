@@ -25,14 +25,8 @@ import java.util.UUID
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun UsersPage(modifier: Modifier, navController: NavController, userViewModel: UserViewModel) {
-    var name by remember { mutableStateOf("") }
-    var email by remember { mutableStateOf("") }
-    var phone by remember { mutableStateOf("") }
-    var message by remember { mutableStateOf("") }
-
     val users by userViewModel.users.observeAsState(emptyList())
     val loading by userViewModel.loading.observeAsState(false)
-    val error by userViewModel.error.observeAsState()
 
     LaunchedEffect(Unit) {
         userViewModel.getAll()
@@ -52,7 +46,7 @@ fun UsersPage(modifier: Modifier, navController: NavController, userViewModel: U
                     }
                 },
                 colors = TopAppBarDefaults.smallTopAppBarColors(
-                    containerColor = Color.Blue
+                    containerColor = Color(0xFF6200EE)
                 )
             )
         }
@@ -63,72 +57,7 @@ fun UsersPage(modifier: Modifier, navController: NavController, userViewModel: U
                 .padding(padding)
                 .padding(16.dp)
         ) {
-            OutlinedTextField(
-                value = name,
-                onValueChange = { name = it },
-                label = { Text("Nome") },
-                modifier = Modifier.fillMaxWidth()
-            )
-
             Spacer(modifier = Modifier.height(16.dp))
-
-            OutlinedTextField(
-                value = phone,
-                onValueChange = { phone = it },
-                label = { Text("Telefone") },
-                modifier = Modifier.fillMaxWidth()
-            )
-
-            Spacer(modifier = Modifier.height(16.dp))
-
-            OutlinedTextField(
-                value = email,
-                onValueChange = { email = it },
-                label = { Text("E-mail") },
-                modifier = Modifier.fillMaxWidth()
-            )
-
-            Spacer(modifier = Modifier.height(16.dp))
-
-            OutlinedTextField(
-                value = message,
-                onValueChange = { message = it },
-                label = { Text("Mensagem") },
-                modifier = Modifier.fillMaxWidth()
-            )
-
-            Spacer(modifier = Modifier.height(16.dp))
-
-            ElevatedButton(
-                onClick = {
-                    if (name.isNotEmpty() && phone.isNotEmpty() && email.isNotEmpty() && message.isNotEmpty()) {
-                        val user = User(
-                            name = name,
-                            email = email,
-                            phone = phone,
-                            message = message
-                        )
-                        userViewModel.save(user)
-                        name = ""
-                        email = ""
-                        phone = ""
-                        message = ""
-                    }
-                },
-                modifier = Modifier.fillMaxWidth(),
-                colors = ButtonDefaults.elevatedButtonColors(containerColor = Color(0xFF6200EE))
-            ) {
-                Text(
-                    text = "Cadastrar Tarefa",
-                    color = Color.White
-                )
-            }
-
-            Spacer(modifier = Modifier.height(20.dp))
-
-            error?.let {
-                Text(text = it, color = Color.Red)
-            }
 
             if (loading) {
                 CircularProgressIndicator(modifier = Modifier.align(Alignment.CenterHorizontally))
